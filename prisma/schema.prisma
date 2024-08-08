@@ -238,8 +238,8 @@ model t_news {
   body            String?
   firsttext       String?
   lang            String      @default("ru") @db.Char(2)
-  typeid          String
-  type            t_news_type @relation(fields: [typeid], references: [id], onDelete: Cascade)
+  type_id         String
+  type            t_news_type @relation(fields: [type_id], references: [id], onDelete: Cascade)
   view            Int         @default(0)
   photo           String
   foto            String      @db.VarChar(200)
@@ -433,23 +433,22 @@ model t_tour {
   type            t_types            @relation(fields: [type_id], references: [id], onDelete: Cascade)
   type_id         String
   main_title      String?
-  name            String
-  name2           String
-  price           Float
-  oldPrice        Float
-  sales           String
+  name            String?
+  name2           String?
+  price           Float?
+  oldprice        Float?
+  sales           String?
   body            String?
   map             String?
-  url             String             @unique
-  photo           String
-  date            String
-  metakeywords    String
-  metadescription String
+  url             String?            @unique
+  photo           String?
+  metakeywords    String?
+  metadescription String?
   ftext           String?
   ftext2          String?
-  intop           Int                @default(0)
-  intop2          Int                @default(0)
-  intop3          Int                @default(0)
+  intop           Int?               @default(0)
+  intop2          Int?               @default(0)
+  intop3          Int?               @default(0)
   types           Json?
   include         Json?
   exclude         Json?
@@ -459,12 +458,13 @@ model t_tour {
   transport       Json?
   country         Json?
   city            Json?
-  travellers      String
-  archive         Int                @default(0)
-  solo_price      Float              @default(0)
-  single_price    Float
-  guaranted       Int                @default(0)
-  new_type        String             @default("i")
+  travellers      String?
+  archive         Int?               @default(0)
+  solo_price      Float?             @default(0)
+  single_price    Float?
+  guaranted       Int?               @default(0)
+  new_type        String?            @default("i")
+  transfer_price  String?
   tour_city       t_tourcity[]
   tourtoday       t_tourtoday[]
   tourphoto       t_tourphoto[]
@@ -492,6 +492,7 @@ model t_tourtoday {
   lunch        Boolean          @default(false)
   dinner       Boolean          @default(false)
   hotels       Json?
+  hotel        Int
   tourdayphoto t_tourdayphoto[]
 }
 
