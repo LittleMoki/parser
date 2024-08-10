@@ -7,7 +7,6 @@ async function insertData() {
 		await prisma.$executeRaw`
 
 INSERT INTO t_tour_faqs (id, tourid, faqid) VALUES
-(24, 21, 1),
 (35, 21, 4),
 (36, 21, 5),
 (37, 21, 6),
@@ -159,8 +158,8 @@ INSERT INTO t_tour_faqs (id, tourid, faqid) VALUES
 (273, 87, 6),
 (274, 87, 7),
 (275, 87, 8),
-(276, 124, 4),
-(277, 126, 4);
+(276, 124, 4)
+
 `
 		console.log('Данные успешно вставлены в базу данных')
 	} catch (error) {

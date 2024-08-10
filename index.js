@@ -1,14 +1,11 @@
-import { compare } from 'bcrypt'
+const enter = [
+	['name', 'joni'],
+	['age', 8],
+	['job', 'fullstack'],
+]
 
-const hashedPassword =
-	// $2b$07$YfgcHn1GDFBfOagsEmfQZ.nHh9lcNNBjOAC0VS.8dF9agw89CZK4W
-	'$2b$07$cejkrFhfrV.kzA8CIvFEGOmiy.VAgW0amEtp4E0u5NO.l0RyWSIS6'
-const passwordToCheck = 'eshonipir63'
+const pam = new Map(enter)
 
-compare(passwordToCheck, hashedPassword, (err, result) => {
-	if (result) {
-		console.log('Пароль совпадает!')
-	} else {
-		console.log('Пароль неверный.')
-	}
-})
+const array = [...pam]
+const pamObj = Object.fromEntries(pam.entries())
+console.log(pamObj)
